@@ -1,0 +1,5 @@
+<h1>Edit Shift</h1>
+<%= render partial: 'form', locals: {
+                                      path: "/shifts/#{@shift.id}",
+                                      method: :patch,
+                                      button_text: 'Update Shift'} %>

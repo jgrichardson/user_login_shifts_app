@@ -1,0 +1,44 @@
+<%= form_with model: @shift, url: path, method: method do |f| %>
+
+    <div style="color:red">
+        <%= f.object.errors.full_messages.join(", ") if f.object.errors.any? %>
+    </div>
+
+    <div class="field">
+        <label class="label">Role</label>
+        <div class="control">
+            <%= f.text_field :role %>
+        </div>
+    </div>
+  
+    <div class="field">
+        <label class="label">Start At</label>
+        <div class="control">
+            <%= f.datetime_select :start_at, :ampm => true, :minute_step => 15 %>
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">End At</label>
+        <div class="control">    
+            <%= f.datetime_select :end_at, :ampm => true, :minute_step => 15%>
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">User</label>
+        <div class="control">
+            <%= f.collection_select :user_id, User.all, :id, :name %>
+        </div>
+    </div>
+
+    <div class="field is-grouped">
+        <div class="control">
+            <%= f.submit button_text, class: "button is-primary" %>
+        </div>
+        <div class="control">
+            <%= link_to 'Back', shifts_path, class: "button is-link is-light" %>
+        </div>
+    </div>
+
+<% end %>

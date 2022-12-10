@@ -1,0 +1,39 @@
+<%= form_with model: @user, url: path, method: method do |f| %>
+
+    <div style="color:red">
+        <%= f.object.errors.full_messages.join(", ") if f.object.errors.any? %>
+    </div>
+
+    <div class="field">
+        <label class="label">Name</label>
+        <div class="control">
+            <%= f.text_field :name %>
+        </div>
+    </div>
+  
+    <div class="field">
+        <label class="label">Username</label>
+        <div class="control">
+            <%= f.text_field :user_name %>
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Password</label>
+        <div class="control">
+            <%= f.text_field :password %>
+        </div>
+    </div>
+
+
+    <div class="field is-grouped">
+        <div class="control">
+            <%= f.submit button_text, class: "button is-primary" %>
+        </div>
+        <div class="control">
+            <%= link_to 'Back', users_path, class: "button is-link is-light" %>
+        </div>
+        
+    </div>
+
+<% end %>

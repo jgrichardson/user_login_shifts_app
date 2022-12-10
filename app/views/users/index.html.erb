@@ -1,0 +1,42 @@
+
+<div class="columns is-vcentered reverse-columns">
+    <div class="column">
+        
+        <table class="table is-fullwidth is-hoverable is-striped is-bordered">
+            <thead >
+                <tr>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @users.each do |u| %>
+                    <tr>
+                        <td>
+                            <%= u.name %>
+                        </td>
+                        <td>
+                            <%= u.user_name %>
+                        </td>
+                        <td class="is-vcentered">
+                            <div class="field is-grouped is-grouped-right">
+                                <p class="control">
+                                    <%= button_to "Edit", edit_user_path(u.id), :class => "button is-yellow is-pulled-right", method: :get %>              
+                                </p>
+                                <p class="control">  
+                                    <%= button_to "Delete", user_path(u.id), :class => "button is-danger is-pulled-right", method: :delete %>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+        <div class="buttons">
+            <%= button_to "New User", new_user_path, :class => "button is-primary mb-6", method: :get %>
+            <%= button_to "Back", root_path, :class => "button is-yellow mb-6", method: :get %>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="columns is-vcentered reverse-columns">
+        <div class="column">
+            
+            <table class="table is-fullwidth is-hoverable is-striped is-bordered">
+                <thead >
+                    <tr>
+                        <th>User</th>
+                        <th>Role</th>
+                        <th>Starts At</th>
+                        <th>Ends At</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @shifts.each do |s| %>
+                        <tr>
+                            <td>
+                                <%= s.user.name %>
+                            </td>
+                            <td>
+                                <%= s.role %>
+                            </td>
+                            <td>
+                                <%= s.start_at %>
+                            </td>
+                            <td>
+                                <%= s.end_at %>
+                            </td>
+                            <td class="is-vcentered">
+                                <div class="field is-grouped is-grouped-right">
+                                    <p class="control">
+                                        <%= button_to "Edit", edit_shift_path(s.id), :class => "button is-yellow is-pulled-right", method: :get %>              
+                                    </p>
+                                    <p class="control">  
+                                        <%= button_to "Delete", shift_path(s.id), :class => "button is-danger is-pulled-right", method: :delete %>
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+            <div class="buttons">
+            <%= button_to "New Shift", new_shift_path, :class => "button is-primary mb-6", method: :get %>
+            <%= button_to "Back", root_path, :class => "button is-yellow mb-6", method: :get %>
+            </div>
+        </div>
+    </div>
+</div>

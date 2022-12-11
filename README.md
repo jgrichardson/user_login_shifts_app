@@ -94,6 +94,12 @@ Tests can be run for the three endpoints:
 
 ```
 
+# TO DO
+
+* Password attribute in User model should be coverted to password_hash, with has_secure_password mixin added to User model, and Bcrypt used to encrypt password_hash
+
+* API endpoints should be secured with JWT or another approach.
+
 ## License
 
 The source code for the application is licensed under the MIT license, which you can find in the LICENSE file in this repo.

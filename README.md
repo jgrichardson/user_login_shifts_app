@@ -39,7 +39,9 @@ This application exposes three RESTful, versioned (v1) API endpoints:
 
 ### POST / Sign_in
 
-This endpoint expects a JSON-encoded body, with a user_name attribute and a password attribute. If a matching user is found, the server generates a unique session ID and include a Set-Cookie header in the response with the session ID. All subsequent requests that include this session ID cookie will be considered authenticated for the given user. If no matching user is found, the server should return a 401 error and a JSON error message
+This endpoint expects a JSON-encoded body, with a user_name attribute and a password attribute. If a matching user is found, the server generates a unique session ID and include a Set-Cookie header in the response with the session ID. All subsequent requests that include this session ID cookie will be considered authenticated for the given user. If no matching user is found, the server should return a 401 error and a JSON error message.
+
+Given my use of a User model in PostgreSQL for this simple app, I chose to persist the session_id in the database - there may be a better approach.
 
 Example CURL request:
 ```
@@ -86,19 +88,11 @@ Example CURL request:
     -X GET https://powerful-falls-42539.herokuapp.com/api/v1/users/1/shifts
 ```
 
-## Testing
-
-Tests can be run for the three endpoints:
-
-```
-
-```
-
 # TO DO
 
-* Password attribute in User model should be coverted to password_hash, with has_secure_password mixin added to User model, and Bcrypt used to encrypt password_hash
+* The password attribute in the User model should be coverted to password_hash, with has_secure_password mixin added to User model, and Bcrypt used to encrypt password_hash.
 
-* API endpoints should be secured with JWT or another approach.
+* API endpoints should be secured with JWT or another token-based approach. Current approach is vulnerable to CSRF.
 
 ## License
 
